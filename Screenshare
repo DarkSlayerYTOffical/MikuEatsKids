@@ -1,0 +1,9 @@
+local UIS = game:GetService("UserInputService")
+
+UIS.InputBegan:Connect(function(UserInput)
+if UserInput.UserInputType == Enum.UserInputType.Keyboard and UserInput.KeyCode == Enum.KeyCode.Space then
+	workspace.Ignore.LocalCharacter.Bottom.Name = "q"
+	wait(.1)
+	workspace.Ignore.LocalCharacter.q.Name = "Bottom"
+end
+end)
