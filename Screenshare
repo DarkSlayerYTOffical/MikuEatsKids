@@ -1,9 +1,15 @@
-local UIS = game:GetService("UserInputService")
+function update(text)
+    local args = {
+        [1] = "Update",
+        [2] = {
+            ["DescriptionText"] = text,
+            ["ImageId"] = 0
+        }
+    }
 
-UIS.InputBegan:Connect(function(UserInput)
-if UserInput.UserInputType == Enum.UserInputType.Keyboard and UserInput.KeyCode == Enum.KeyCode.Space then
-	workspace.Ignore.LocalCharacter.Bottom.Name = "q"
-	wait(.1)
-	workspace.Ignore.LocalCharacter.q.Name = "Bottom"
+    game:GetService("ReplicatedStorage").CustomiseBooth:FireServer(unpack(args))
 end
-end)
+while true do
+    Response = game:HttpGet("http://localhost:8002")
+    coroutine.wrap(update)(Response)
+end
